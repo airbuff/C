@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 int main() {
@@ -17,6 +18,16 @@ int main() {
         putchar('\n');
         
     }
-   
+    
+    char names[4][5]={
+        "Ant",
+        "Bee",
+        "Cat",
+        "Duck"
+    };
+    
+    for(int x=0; x<4;x++)
+        printf("%s\n",names[x]);
+    
     return 0;
 }
