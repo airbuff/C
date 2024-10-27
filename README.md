@@ -7,9 +7,9 @@ Welcome to this repository, a journey through C programming concepts from basic 
 
 This repository contains three primary directories, each covering different levels of C programming:
 
-- **[Basic](./basic/)**: Fundamental C concepts, syntax, and essential programming skills.
+- **[Basic](./Basic/)**: Fundamental C concepts, syntax, and essential programming skills.
 - **[Intermediate](./intermediate/)**: More advanced topics such as memory management, pointers, and dynamic data structures.
-- **[Advance](./advance/)**: Complex concepts, advanced memory manipulation, and introductory assembly to bridge low-level programming skills.
+- **[Advance](./Advance/)**: Complex concepts, advanced memory manipulation, and introductory assembly to bridge low-level programming skills.
 
 Each directory contains its own set of exercises and example code, organized by topic.
 
