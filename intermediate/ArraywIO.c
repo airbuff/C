@@ -7,8 +7,7 @@ Key Concepts: Arrays, for loops, summing and averaging values.
 */
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+
 
 int main(){
 
@@ -16,14 +15,11 @@ int main(){
     int sum; // variable to store the sum of all numbers
 
     printf("How many numbers do you want to add?\n");
-    if(fgets(buffer,sizeof(buffer),stdin)){
-        // store input from stdin into buffer
-        if(sscanf(buffer,"%d",&sum)==1){
-            //convert the char to int
-            sum = strtol(buffer,NULL,10);
-            printf("You want to add %d numbers together.\n",sum);
-            //verify the number input is integer
-        }else{
+    if (fgets(buffer, sizeof(buffer), stdin)) {
+        // Attempt to parse an integer from buffer
+        if (sscanf(buffer, "%d", &sum) == 1) {
+            printf("You want to add %d numbers together.\n", sum);
+        } else {
             printf("Error reading input.\n");
         }
     }
