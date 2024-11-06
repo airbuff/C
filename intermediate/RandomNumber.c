@@ -16,13 +16,13 @@ int main(){
 
     char input[5];
     bool a = true;
+    int count = 0;
     srand(time(NULL));
     int rand_num = (rand() % ( 50 ) + 1 );
 
     while(a){
-
     printf("Guess the number it's between 1 & 50\n");
-
+    count++;
     if(fgets(input, sizeof(input), stdin)){
 
              int guess = atoi(input) ;
@@ -33,13 +33,13 @@ int main(){
             printf("Higher.\n");
 
         }else if(rand_num < guess){
-
                 printf("Lower.\n");
         }else{
-            printf("You guessed it right.\n");
-            a = false;
-        }
+            printf("It took you %d tries and you guessed it.\n",count);
 
+            a = false;
+
+        }
     }else {
         printf("Unexpected Input.\n");
     }
