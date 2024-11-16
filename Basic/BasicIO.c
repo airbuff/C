@@ -5,36 +5,51 @@ Objective: Practice reading user input, working with conditionals, and basic out
 Exercise: Write a program that asks the user to enter their name and age. Then, output a custom greeting with their name. Based on the age, print a message indicating whether the user is a minor (under 18), an adult, or a senior (over 65).
 Key Concepts: printf, scanf, if conditions, using char arrays for string input.
 
+Input Validation: Handles invalid or negative ages gracefully and exits if input fails.
+Unnecessary Buffer Removed: Eliminates the redundant buffer variable.
+Improved Safety: Checks fgets return value and handles errors effectively.
+Simpler Logic: Streamlined age-checking logic.
+
 */
 #include <stdio.h>
 #include <string.h>
 
-int main(){
-    char buffer[30];
+
+int main() {
     char name[30];
     int age;
 
+    // Prompt for name
     printf("Enter your name: ");
-    fgets(name,sizeof(name),stdin); // Scans name and stores it in memory;
-    name[strcspn(name, "\r\n")] = 0; // remove the trailing new line character from the array
+    if (fgets(name, sizeof(name), stdin)) {
+        name[strcspn(name, "\r\n")] = 0; // Remove trailing newline
+    } else {
+        fprintf(stderr, "Error reading name.\n");
+        return 1; // Exit program with error
+    }
 
-    printf("Enter you age: ");
-        if (fgets(buffer,sizeof(buffer),stdin)){
-            // using sscanf to parse int from buffer
-            if(sscanf(buffer, "%d", &age)==1){
-        printf("Age recorded.\n");
-            }else{
-                printf("Error reading input.\n");
-            }
-        } // Scans age and stores it in buffer parse the buffer to int
+    // Prompt for age
+    printf("Enter your age: ");
+    char age_input[10]; // Buffer for numeric input
+    if (fgets(age_input, sizeof(age_input), stdin)) {
+        if (sscanf(age_input, "%d", &age) != 1 || age < 0) {
+            fprintf(stderr, "Invalid age entered.\n");
+            return 1; // Exit program with error
+        }
+    } else {
+        fprintf(stderr, "Error reading age.\n");
+        return 1; // Exit program with error
+    }
 
-    printf("Hello, %s!\n",name);
+    // Greeting
+    printf("Hello, %s!\n", name);
 
-    if(age<18){
+    // Age classification
+    if (age < 18) {
         printf("You are a child.\n");
-    }else if(age<=65){
+    } else if (age <= 65) {
         printf("You are an adult.\n");
-    }else {
+    } else {
         printf("You are a senior.\n");
     }
 
